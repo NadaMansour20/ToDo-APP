@@ -68,6 +68,7 @@ class AddFragment:BottomSheetDialogFragment() {
         adddetails=requireView().findViewById(R.id.enterdetailes)
         add=requireView().findViewById(R.id.addtodo)
         choosedata=requireView().findViewById(R.id.choosedata)
+        choosedata.setText(" "+Calendar.YEAR+"/"+Calendar.MONTH+"/"+Calendar.DAY_OF_MONTH)
 
         choosedata.setOnClickListener {
             addDatePicker()

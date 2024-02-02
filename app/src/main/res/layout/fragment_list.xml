@@ -4,18 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/MAIN_SCREEN"
     tools:context=".project.ListFragment">
 
     <TextView
         android:id="@+id/listtodotextview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
         android:padding="70dp"
+        style="@style/TEXTVIEW_BACKGROUND"
         android:theme="@style/headname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/to_do_list"
         app:layout_constraintTop_toTopOf="parent" />
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="@color/blue"
+        app:mcv_calendarMode="week"
+        app:layout_constraintTop_toBottomOf="@id/listtodotextview"
+        android:layout_marginTop="150dp"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskrecycler"

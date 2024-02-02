@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ToDo_App</string>
+    <string name="settings">الاعدادات</string>
+    <string name="list">القائمه</string>
+    <string name="todo_task">أسم المهمه</string>
+    <string name="Shortcut_to_task">اختصار للمهمه</string>
+    <string name="language">اللغه</string>
+    <string name="mode">الوضع</string>
+    <string name="to_do_list">قائمه المهام</string>
+    <string name="add_new_task">اضافه مهمه جديده</string>
+    <string name="enter_your_task">أدخل مهمتك</string>
+    <string name="details">التفاصيل</string>
+    <string name="enter_details_of_your_task">أدخل تفاصيل مهمتك</string>
+    <string name="choose_date">أختر التاريخ</string>
+    <string name="add_todo">اضف المهمه</string>
+    <string name="setting">الاعدادات</string>
+</resources>

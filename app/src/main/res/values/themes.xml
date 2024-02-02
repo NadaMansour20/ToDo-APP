@@ -21,6 +21,41 @@
         <item name="android:textSize">30dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:text">To Do List</item>
     </style>
+
+    <!--light mood -->
+    <style name="MAIN_SCREEN">
+        <item name="android:background">@color/basic_color</item>
+    </style>
+    <style name="ADD_SCREEN">
+        <item name="android:background">@color/white</item>
+    </style>
+
+
+    <style name="TEXT">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TEXTVIEW_BACKGROUND">
+        <item name="android:background">@color/blue</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BUTTON">
+        <item name="android:backgroundTint">@color/blue</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="BUTTONNAVIGATION">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="FLOATINGBUTTON">
+        <item name="android:backgroundTint">@color/blue</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="SPINNER">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

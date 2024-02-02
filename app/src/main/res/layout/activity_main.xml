@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/basic_color">
-
-    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mcv_showOtherDates="all"
-        app:mcv_selectionColor="@color/blue"
-        app:mcv_calendarMode="week"
-        />
+    style="@style/MAIN_SCREEN"
+    >
 
     <TextView
         android:id="@+id/todotextview"
@@ -23,8 +14,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:theme="@style/headname"
-        android:background="@color/blue"
+        style="@style/TEXTVIEW_BACKGROUND"
         android:padding="70dp"
+        android:text="To Do List"
         />
 
     <FrameLayout
@@ -38,7 +30,7 @@
         android:id="@+id/bottomnavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        style="@style/BUTTONNAVIGATION"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menubuttonnavigation"
         app:itemTextColor="@color/item_colorof_buttonnavigation"
@@ -49,9 +41,8 @@
         android:id="@+id/floatingbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue"
         android:src="@drawable/ic_action_name"
-        app:tint="@color/white"
+        style="@style/FLOATINGBUTTON"
         app:layout_constraintBottom_toTopOf="@id/bottomnavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

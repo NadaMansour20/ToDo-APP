@@ -2,14 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    style="@style/ADD_SCREEN"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/addtask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add new task"
+        android:text="@string/add_new_task"
         android:theme="@style/textstyle"
+        style="@style/TEXT"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:hint="enter your task"
+            android:hint="@string/enter_your_task"
             android:background="@color/transparent"
           />
 
@@ -39,8 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:text="Detailes"
+        android:text="@string/details"
         android:padding="20dp"
+        style="@style/TEXT"
         android:theme="@style/textstyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/entertask" />
@@ -56,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:hint="detailes"
+            android:hint="@string/enter_details_of_your_task"
             android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/transparent"/>
@@ -66,7 +69,8 @@
         android:id="@+id/choosedata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Date"
+        android:text="@string/choose_date"
+        style="@style/TEXT"
         android:theme="@style/textstyle"
         app:layout_constraintTop_toBottomOf="@id/enterdetailes"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,12 +84,11 @@
         app:layout_constraintTop_toBottomOf="@id/choosedata"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Add ToDo"
+        android:text="@string/add_todo"
         android:textSize="20dp"
+        style="@style/BUTTON"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/blue"
         android:layout_marginTop="20dp"
        />
 
