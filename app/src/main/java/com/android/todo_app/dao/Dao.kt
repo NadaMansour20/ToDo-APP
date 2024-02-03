@@ -16,17 +16,17 @@ interface Dao {
     @Insert
       fun add_todo(todo: Todo)
 
-      @Update
-      fun update(todo: Todo)
+    @Update
+    fun update(todo: Todo)
 
-      @Delete
-      fun delete(todo: Todo)
+    @Delete
+    fun delete(todo: Todo)
 
-      @Query("select * from todo")
-      fun get_all_Todo():List<Todo>
+    @Query("select * from todo")
+    fun get_all_Todo(): MutableList<Todo>
 
 
-  @Query("select * from todo where data=:date")
-  fun getTodoByDate(date: Date):List<Todo>
+    @Query("select * from todo where data=:date")
+    fun getTodoByDate(date: Date): MutableList<Todo>
 
 }

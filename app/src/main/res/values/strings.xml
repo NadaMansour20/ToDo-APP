@@ -14,5 +14,10 @@
     <string name="enter_details_of_your_task">enter details of your task</string>
     <string name="choose_date">Choose Date</string>
     <string name="add_todo">Add ToDo</string>
-    <string name="setting">Settings</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="task_name">Task Name</string>
+    <string name="select_time">Select Time</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="done">Done!!</string>
+
 </resources>

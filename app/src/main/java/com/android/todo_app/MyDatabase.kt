@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.android.todo_app.dao.Dao
 import com.android.todo_app.database.Todo
@@ -13,7 +12,7 @@ import com.android.todo_app.database.Todo
 //version change when change in schema
 
 //delete table or update and so on
-@Database(entities = [Todo::class], version = 1)
+@Database(entities = [Todo::class], version = 3)
 @TypeConverters(DateConverter::class)
 abstract class MyDatabase: RoomDatabase() {
 

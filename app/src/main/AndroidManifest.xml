@@ -16,10 +16,10 @@
         android:theme="@style/Theme.ToDo_App"
         tools:targetApi="31">
         <activity
-            android:name=".project.SettingsFragment"
+            android:name=".project.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".project.MainActivity"
+            android:name=".project.UpdateActivity"
             android:exported="false" />
         <activity
             android:name=".project.Splash"

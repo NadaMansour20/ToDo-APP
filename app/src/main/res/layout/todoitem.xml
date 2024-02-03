@@ -60,7 +60,7 @@
             android:layout_marginHorizontal="40dp"
             android:text="@string/todo_task"
             android:textColor="@color/blue"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/description"
             app:layout_constraintEnd_toStartOf="@id/done"
@@ -86,13 +86,27 @@
             app:layout_constraintTop_toBottomOf="@+id/taskname"
             app:layout_constraintVertical_chainStyle="packed" />
 
+        <TextView
+            android:id="@+id/text_isdone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp"
+            android:text="@string/done"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/buttondoneshape"
-            android:paddingHorizontal="30dp"
+            android:paddingHorizontal="45dp"
             android:paddingVertical="10dp"
             android:src="@drawable/icon_check_done"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,10 +1,7 @@
 package com.android.todo_app.project
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
@@ -43,6 +40,7 @@ class SettingsFragment : Fragment() {
 
         fillspinner(spinner = spinnerlanguage, items = datalanguage)
         fillspinner(spinner = spinnermode, items = datamode)
+
 
         // change language
         spinnerlanguage.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
@@ -90,23 +88,26 @@ class SettingsFragment : Fragment() {
         }
 
     }
+
     // to fill data in spinner
-    fun fillspinner(spinner:Spinner,items:Array<String>){
-        var adapter_spinner= ArrayAdapter(requireContext(),
-            androidx.transition.R.layout.support_simple_spinner_dropdown_item,items)
-        spinner.adapter=adapter_spinner
+    fun fillspinner(spinner: Spinner, items: Array<String>) {
+        val adapter_spinner = ArrayAdapter(
+            requireContext(),
+            androidx.transition.R.layout.support_simple_spinner_dropdown_item, items
+        )
+        spinner.adapter = adapter_spinner
     }
 
 
-    fun language(lang:String){
-        var res:Resources=this.resources
-        var config:Configuration=res.configuration
-        var dis:DisplayMetrics=res.displayMetrics
-        var locale:Locale= Locale(lang)
+    // to change language of application
+    fun language(lang: String) {
+        val res: Resources = resources
+        val config: Configuration = res.configuration
+        val dis: DisplayMetrics = res.displayMetrics
+        val locale: Locale = Locale(lang)
         Locale.setDefault(locale)
         config.setLocale(locale)
-        res.updateConfiguration(config,dis)
-
+        res.updateConfiguration(config, dis)
 
     }
 }

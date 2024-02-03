@@ -58,8 +58,13 @@ dependencies {
     kapt("androidx.room:room-compiler:2.5.2")
 
 
-    implementation ("com.github.zerobranch:SwipeLayout:1.3.1")
+    implementation("com.github.zerobranch:SwipeLayout:1.3.1")
 
     implementation("com.github.prolificinteractive:material-calendarview:2.0.0")
+
+
+    // to change language of project
+    implementation("com.zeugmasolutions.localehelper:locale-helper-android:1.5.1")
+
 
 }

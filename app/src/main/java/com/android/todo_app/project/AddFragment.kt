@@ -68,7 +68,6 @@ class AddFragment:BottomSheetDialogFragment() {
         adddetails=requireView().findViewById(R.id.enterdetailes)
         add=requireView().findViewById(R.id.addtodo)
         choosedata=requireView().findViewById(R.id.choosedata)
-        choosedata.setText(" "+Calendar.YEAR+"/"+Calendar.MONTH+"/"+Calendar.DAY_OF_MONTH)
 
         choosedata.setOnClickListener {
             addDatePicker()
@@ -76,10 +75,10 @@ class AddFragment:BottomSheetDialogFragment() {
 
         add.setOnClickListener {
             if(validate()){
-                var task=addtask.editText?.text.toString()
-                var details=adddetails.editText?.text.toString()
+                val task = addtask.editText?.text.toString()
+                val details = adddetails.editText?.text.toString()
 
-                insertdata(task=task,details=details)
+                insertdata(task = task, details = details)
             }
 
         }
@@ -87,17 +86,17 @@ class AddFragment:BottomSheetDialogFragment() {
 
     }
 
-// insert data into database
-    fun insertdata(task:String,details:String){
+    // insert data into database
+    fun insertdata(task: String, details: String) {
 
-        var todo=Todo(
-            name = task, detailes =details, data =calender.clearTime().time
+        val todo = Todo(
+            id, name = task, detailes = details, data = calender.clearTime().time, is_done = false
         )
         MyDatabase.getInstance(requireContext().applicationContext).todoDao().add_todo(todo)
 
-    OnTodoAddlisten?.OnTodoAdd()
+        OnTodoAddlisten?.OnTodoAdd()
 
-    dismiss()   //end fragment
+        dismiss()   //end bottomSheet fragment
 
 
     }
@@ -111,15 +110,29 @@ class AddFragment:BottomSheetDialogFragment() {
 
 
     // open datapicker
-    fun addDatePicker(){
+    fun addDatePicker() {
 
-        var datepicker=DatePickerDialog(requireContext(),object :DatePickerDialog.OnDateSetListener{
-            override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val datepicker = DatePickerDialog(
+            requireContext(),
+            object : DatePickerDialog.OnDateSetListener {
+                override fun onDateSet(
+                    view: DatePicker?,
+                    year: Int,
+                    month: Int,
+                    dayOfMonth: Int
+                ) {
+                    calender.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                    calender.set(Calendar.MONTH, month)
+                    calender.set(Calendar.YEAR, year)
 
-                choosedata.setText(" "+dayOfMonth+"/"+(month+1)+"/"+" "+year)
+                    choosedata.setText(" " + dayOfMonth + "/" + (month + 1) + "/" + " " + year)
 
-            }
-        },calender.get(Calendar.YEAR),calender.get(Calendar.MONTH),calender.get(Calendar.DAY_OF_MONTH))
+                }
+            },
+            calender.get(Calendar.YEAR),
+            calender.get(Calendar.MONTH),
+            calender.get(Calendar.DAY_OF_MONTH)
+        )
 
         datepicker.show()
     }
