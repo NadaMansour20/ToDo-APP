@@ -12,7 +12,7 @@ import com.android.todo_app.database.Todo
 //version change when change in schema
 
 //delete table or update and so on
-@Database(entities = [Todo::class], version = 3)
+@Database(entities = [Todo::class], version = 5)
 @TypeConverters(DateConverter::class)
 abstract class MyDatabase: RoomDatabase() {
 

@@ -26,7 +26,7 @@ interface Dao {
     fun get_all_Todo(): MutableList<Todo>
 
 
-    @Query("select * from todo where data=:date")
+    @Query("select * from todo where date=:date")
     fun getTodoByDate(date: Date): MutableList<Todo>
 
 }

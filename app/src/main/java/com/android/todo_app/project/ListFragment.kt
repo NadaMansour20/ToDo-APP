@@ -1,7 +1,6 @@
 package com.android.todo_app.project
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +20,6 @@ import java.util.Calendar
 
 class ListFragment : Fragment() {
 
-    var textisdone: TextView? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +32,8 @@ class ListFragment : Fragment() {
     var listadapter = ListAdapter(null)
     lateinit var materialcalenderview: MaterialCalendarView
 
+    var textisdone: TextView? = null
+
 
     var calender = Calendar.getInstance()
 
@@ -44,6 +44,8 @@ class ListFragment : Fragment() {
         recyclerView = view.findViewById(R.id.taskrecycler)
         recyclerView.adapter = listadapter
 
+
+        textisdone = view.findViewById(R.id.text_isdone)
         initattribute()
         deleteAndupdate()
 
@@ -113,19 +115,33 @@ class ListFragment : Fragment() {
 
             }
 
-            override fun Done(done: ImageView, taskname: TextView) {
-                taskname.setTextColor(Color.parseColor("#0F9D58"))
 
-                //to remove image from image view
-                done.setImageDrawable(null)
+            override fun Done(
+                todo: Todo,
+                iconphoto_delete: ImageView,
+                done: ImageView,
+                taskname: TextView
+            ) {
 
-                //convert done image view background to transparent color to show Done!!
-                done?.setBackgroundResource(R.color.transparent)
+                MyDatabase.getInstance(requireContext().applicationContext).todoDao().delete(todo)
 
+                val todo = Todo(id, todo.name, todo.detailes, todo.date, true)
+                MyDatabase.getInstance(requireContext().applicationContext).todoDao().update(todo)
+
+
+                if (todo.is_done == true) {
+
+                    //to make animation between image view and icon_delete disappear and text view appear
+                    taskname.alpha = 1.0f
+                    done.alpha = 0.0f
+                    iconphoto_delete.alpha = 0.0f
+
+                }
 
             }
 
 
         }
+
     }
 }

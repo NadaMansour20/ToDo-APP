@@ -61,7 +61,7 @@ class UpdateActivity : AppCompatActivity() {
         // date format from Tue Apr 26 09:14:10 GMT+02:00 2016 to 26/4/2016
 
         val dateformat: DateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val Dateafterformat: String = dateformat.format(datafromintent.data)
+        val Dateafterformat: String = dateformat.format(datafromintent.date)
 
         updatetime?.setText(Dateafterformat)
 

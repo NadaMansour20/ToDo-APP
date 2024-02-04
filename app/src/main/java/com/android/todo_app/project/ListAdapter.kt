@@ -24,6 +24,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
         var done: ImageView? = null
         var carditem: CardView? = null
         var iconphoto_delete: ImageView? = null
+        var task_isdone: TextView? = null
 
         constructor(itemView: View) : super(itemView) {
 
@@ -32,6 +33,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
             done = itemView.findViewById(R.id.done)
             iconphoto_delete = itemView.findViewById(R.id.delete)
             carditem = itemView.findViewById(R.id.cardview)
+            task_isdone = itemView.findViewById(R.id.text_isdone)
 
         }
     }
@@ -51,6 +53,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
         holder.taskname!!.setText(dataitem.name)
         holder.description!!.setText(dataitem.detailes)
 
+
         if (itemclickedDeleteAndUpdate != null) {
             holder.carditem?.setOnClickListener {
                 itemclickedDeleteAndUpdate?.UpdateItem(position, dataitem)
@@ -59,7 +62,13 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
                 itemclickedDeleteAndUpdate?.DeletedItem(position, dataitem)
             }
             holder.done?.setOnClickListener {
-                itemclickedDeleteAndUpdate?.Done(holder.done!!, holder.taskname!!)
+
+                itemclickedDeleteAndUpdate?.Done(
+                    dataitem,
+                    holder.iconphoto_delete!!,
+                    holder.done!!,
+                    holder.taskname!!
+                )
             }
         }
     }
@@ -74,6 +83,6 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
     interface todoItemclicked {
         fun DeletedItem(position: Int, todo: Todo)
         fun UpdateItem(position: Int, todo: Todo)
-        fun Done(done: ImageView, taskname: TextView)
+        fun Done(todo: Todo, iconphoto_delete: ImageView, done: ImageView, taskname: TextView)
     }
 }

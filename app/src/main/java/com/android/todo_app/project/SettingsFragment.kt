@@ -17,12 +17,11 @@ import java.util.Locale
 
 class SettingsFragment : Fragment() {
 
-    var datalanguage= arrayOf("Selected Language","Arabic","English")
-    var datamode= arrayOf("Selected Mode","Dark","Light")
 
+    lateinit var datalanguage: Array<String>
+    lateinit var datamode: Array<String>
     lateinit var spinnerlanguage: Spinner
     lateinit var spinnermode: Spinner
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,34 +36,37 @@ class SettingsFragment : Fragment() {
         spinnerlanguage = view.findViewById(R.id.spinnerlanguage)
         spinnermode = view.findViewById(R.id.sppinermode)
 
+        // get spinner items from resource.string
+        datalanguage = arrayOf(
+            getString(R.string.select_language),
+            getString(R.string.arabic),
+            getString(R.string.english)
+        )
+        datamode = arrayOf(
+            getString(R.string.select_mode),
+            getString(R.string.dark),
+            getString(R.string.light)
+        )
+
 
         fillspinner(spinner = spinnerlanguage, items = datalanguage)
         fillspinner(spinner = spinnermode, items = datamode)
 
 
         // change language
-        spinnerlanguage.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if(position==1){
+        spinnerlanguage.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+
+                if (position == 1) {
                     language("ar")
-                    datalanguage[0]="أختر اللغه"
-                    datalanguage[1]="عربي"
-                    datalanguage[2]="انجليزي"
-
-                    datamode[0]="أختر الوضع"
-                    datamode[1]="داكن"
-                    datamode[2]="فاتح"
-
                 }
-                if(position==2){
+                if (position == 2) {
                     language("en")
-                    datalanguage[0]="Select Language"
-                    datalanguage[1]="Arabic"
-                    datalanguage[2]="English"
-
-                    datamode[0]="Selected Mode"
-                    datamode[1]="Dark"
-                    datamode[2]="Light"
                 }
 
             }
@@ -96,6 +98,8 @@ class SettingsFragment : Fragment() {
             androidx.transition.R.layout.support_simple_spinner_dropdown_item, items
         )
         spinner.adapter = adapter_spinner
+
+
     }
 
 
@@ -108,6 +112,10 @@ class SettingsFragment : Fragment() {
         Locale.setDefault(locale)
         config.setLocale(locale)
         res.updateConfiguration(config, dis)
+
+        // casting requireActivity of fragment as activity and restart it
+        (requireActivity() as MainActivity).restartFragment()
+
 
     }
 }

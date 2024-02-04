@@ -90,7 +90,7 @@ class AddFragment:BottomSheetDialogFragment() {
     fun insertdata(task: String, details: String) {
 
         val todo = Todo(
-            id, name = task, detailes = details, data = calender.clearTime().time, is_done = false
+            id, name = task, detailes = details, date = calender.clearTime().time, is_done = false
         )
         MyDatabase.getInstance(requireContext().applicationContext).todoDao().add_todo(todo)
 

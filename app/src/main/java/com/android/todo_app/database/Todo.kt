@@ -13,7 +13,7 @@ data class Todo(
     var id: Int,
     var name: String? = null,
     var detailes: String? = null,
-    var data: Date? = null,
+    var date: Date? = null,
     var is_done: Boolean? = false
 ) : Serializable     // to make intent with object should implement Serializable on todo or class object
 

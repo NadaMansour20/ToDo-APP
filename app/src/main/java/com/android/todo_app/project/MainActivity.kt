@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
         }
         bottomnavigation.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener {
             if(it.itemId == R.id.list) {
-               supportfragment(listFragment)     //save object
+                supportfragment(listFragment)     //save object
 
-            } else if(it.itemId == R.id.settings) {
+            } else if (it.itemId == R.id.settings) {
                 supportfragment(SettingsFragment())
             }
             return@OnItemSelectedListener true
@@ -54,8 +54,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun supportfragment(fragment:Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.framelayout,fragment).commit()
+    fun supportfragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.framelayout, fragment).commit()
+    }
+
+
+    //to change language should restart fragment
+    fun restartFragment() {
+        val intent = intent
+        finish()
+        startActivity(intent)
     }
 }
 
