@@ -25,5 +25,6 @@
     <string name="arabic">Arabic</string>
     <string name="light">Light</string>
     <string name="dark">Dark</string>
+    <string name="drag_edge">right</string>
 
 </resources>

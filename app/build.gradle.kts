@@ -60,6 +60,9 @@ dependencies {
 
     implementation("com.github.zerobranch:SwipeLayout:1.3.1")
 
+
+    implementation("com.daimajia.swipelayout:library:1.2.0@aar")
+
     implementation("com.github.prolificinteractive:material-calendarview:2.0.0")
 
 

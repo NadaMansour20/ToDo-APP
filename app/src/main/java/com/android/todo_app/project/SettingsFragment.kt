@@ -23,6 +23,7 @@ class SettingsFragment : Fragment() {
     lateinit var spinnerlanguage: Spinner
     lateinit var spinnermode: Spinner
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,6 +36,7 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         spinnerlanguage = view.findViewById(R.id.spinnerlanguage)
         spinnermode = view.findViewById(R.id.sppinermode)
+
 
         // get spinner items from resource.string
         datalanguage = arrayOf(
@@ -64,9 +66,12 @@ class SettingsFragment : Fragment() {
 
                 if (position == 1) {
                     language("ar")
+
                 }
                 if (position == 2) {
                     language("en")
+
+
                 }
 
             }
@@ -118,6 +123,8 @@ class SettingsFragment : Fragment() {
 
 
     }
+
+
 }
 
 

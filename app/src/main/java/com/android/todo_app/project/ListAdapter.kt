@@ -1,5 +1,6 @@
 package com.android.todo_app.project
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,9 +50,15 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+
+        // default figure of view in todo
         val dataitem = datalist!!.get(position)
         holder.taskname!!.setText(dataitem.name)
+        holder.taskname!!.setTextColor(Color.parseColor("#FF5D9BEB"))
+
         holder.description!!.setText(dataitem.detailes)
+        holder.task_isdone!!.alpha = 0.0f
+        holder.done!!.alpha = 1.0f
 
 
         if (itemclickedDeleteAndUpdate != null) {
@@ -67,9 +74,20 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
                     dataitem,
                     holder.iconphoto_delete!!,
                     holder.done!!,
-                    holder.taskname!!
+                    holder.taskname!!, holder.task_isdone!!
                 )
             }
+
+            // to do is done view holder change view with change description
+            if (dataitem.is_done == true) {
+                holder.taskname!!.setTextColor(Color.parseColor("#0F9D58"))
+
+                //to make animation between image view disappear and text view appear
+                holder.task_isdone!!.alpha = 1.0f
+                holder.done!!.alpha = 0.0f
+            }
+
+
         }
     }
 
@@ -83,6 +101,12 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
     interface todoItemclicked {
         fun DeletedItem(position: Int, todo: Todo)
         fun UpdateItem(position: Int, todo: Todo)
-        fun Done(todo: Todo, iconphoto_delete: ImageView, done: ImageView, taskname: TextView)
+        fun Done(
+            todo: Todo,
+            iconphoto_delete: ImageView,
+            done: ImageView,
+            taskname: TextView,
+            task_isdone: TextView
+        )
     }
 }

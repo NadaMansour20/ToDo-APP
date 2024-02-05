@@ -1,6 +1,7 @@
 package com.android.todo_app.project
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.android.todo_app.MyDatabase
 import com.android.todo_app.R
 import com.android.todo_app.clearTime
 import com.android.todo_app.database.Todo
+import com.daimajia.swipe.SwipeLayout
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import java.util.Calendar
@@ -31,23 +33,25 @@ class ListFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     var listadapter = ListAdapter(null)
     lateinit var materialcalenderview: MaterialCalendarView
-
     var textisdone: TextView? = null
+    var swipeLayout: SwipeLayout? = null
 
 
     var calender = Calendar.getInstance()
 
     lateinit var todolistdata: MutableList<Todo>
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.taskrecycler)
         recyclerView.adapter = listadapter
-
+        swipeLayout = view.findViewById(R.id.swipe_layout)
 
         textisdone = view.findViewById(R.id.text_isdone)
         initattribute()
         deleteAndupdate()
+
 
     }
 
@@ -55,8 +59,8 @@ class ListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        //getTodoListFromDB()
-        getalltodo()
+        getTodoListFromDB()
+        //getalltodo()
     }
 
     fun getalltodo() {
@@ -102,7 +106,16 @@ class ListFragment : Fragment() {
                 listadapter.notifyItemRemoved(position)
 
                 MyDatabase.getInstance(requireContext()).todoDao().delete(todo)
-                Toast.makeText(requireContext(), "ToDo Deleted", Toast.LENGTH_LONG).show()
+
+                if (todo.is_done == true) {
+                    Toast.makeText(
+                        requireContext(),
+                        "** ToDo Done Successfully **",
+                        Toast.LENGTH_LONG
+                    )
+                        .show()
+                } else
+                    Toast.makeText(requireContext(), "ToDo Deleted", Toast.LENGTH_LONG).show()
 
             }
 
@@ -120,23 +133,21 @@ class ListFragment : Fragment() {
                 todo: Todo,
                 iconphoto_delete: ImageView,
                 done: ImageView,
-                taskname: TextView
+                taskname: TextView,
+                task_isdone: TextView
             ) {
 
-                MyDatabase.getInstance(requireContext().applicationContext).todoDao().delete(todo)
-
-                val todo = Todo(id, todo.name, todo.detailes, todo.date, true)
+                val todo = Todo(todo.id, todo.name, todo.detailes, todo.date, true)
                 MyDatabase.getInstance(requireContext().applicationContext).todoDao().update(todo)
 
-
                 if (todo.is_done == true) {
+                    taskname.setTextColor(Color.parseColor("#0F9D58"))
 
-                    //to make animation between image view and icon_delete disappear and text view appear
-                    taskname.alpha = 1.0f
+                    //to make animation between image view disappear and text view appear
+                    task_isdone.alpha = 1.0f
                     done.alpha = 0.0f
-                    iconphoto_delete.alpha = 0.0f
-
                 }
+
 
             }
 
@@ -144,4 +155,6 @@ class ListFragment : Fragment() {
         }
 
     }
+
+
 }

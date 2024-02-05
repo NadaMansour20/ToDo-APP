@@ -25,4 +25,7 @@
     <string name="arabic">عربي</string>
     <string name="light">فاتح</string>
     <string name="dark">داكن</string>
+    <string name="drag_edge">left</string>
+
+
 </resources>
