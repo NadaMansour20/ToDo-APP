@@ -83,7 +83,7 @@ class UpdateActivity : AppCompatActivity() {
             if (validate()) {
                 val task = updatetask?.editText?.text.toString()
                 val details = updatedetails?.editText?.text.toString()
-                val time = Calendar.getInstance().clearTime().time
+                val time = calender.clearTime().time
 
                 val recievetodo = Todo(datafromintent.id, task, details, time, false)
 
