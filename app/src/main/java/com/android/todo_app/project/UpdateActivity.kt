@@ -83,9 +83,10 @@ class UpdateActivity : AppCompatActivity() {
             if (validate()) {
                 val task = updatetask?.editText?.text.toString()
                 val details = updatedetails?.editText?.text.toString()
-                val time = calender.clearTime().time
 
-                val recievetodo = Todo(datafromintent.id, task, details, time, false)
+
+                val recievetodo =
+                    Todo(datafromintent.id, task, details, calender.clearTime().time, false)
 
                 updatedata(recievetodo)
             }
@@ -97,17 +98,22 @@ class UpdateActivity : AppCompatActivity() {
 
         MyDatabase.getInstance(this).todoDao().update(recievetodo)
         Toast.makeText(this, "ToDo Updated", Toast.LENGTH_LONG).show()
+
+
         onBackPressed() //remove activity and back to previous activity
+
+
     }
 
     fun addDatePicker() {
+
 
         val datepicker = DatePickerDialog(
             this,
             object : DatePickerDialog.OnDateSetListener {
                 override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                     calender.set(Calendar.YEAR, year)
-                    calender.set(Calendar.MONTH, month + 1)
+                    calender.set(Calendar.MONTH, month)
                     calender.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
                     updatetime?.setText(" " + dayOfMonth + "/" + (month + 1) + "/" + " " + year)
@@ -118,6 +124,7 @@ class UpdateActivity : AppCompatActivity() {
             calender.get(Calendar.MONTH),
             calender.get(Calendar.DAY_OF_MONTH)
         )
+
 
         datepicker.show()
     }

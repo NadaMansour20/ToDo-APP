@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.android.todo_app.R
 import com.android.todo_app.database.Todo
@@ -57,8 +58,13 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
         holder.taskname!!.setTextColor(Color.parseColor("#FF5D9BEB"))
 
         holder.description!!.setText(dataitem.detailes)
-        holder.task_isdone!!.alpha = 0.0f
-        holder.done!!.alpha = 1.0f
+
+        // holder.task_isdone!!.alpha = 0.0f
+        // holder.done!!.alpha = 1.0f
+
+        //OR
+        holder.task_isdone!!.isVisible = false
+        holder.done!!.isVisible = true
 
 
         if (itemclickedDeleteAndUpdate != null) {
@@ -83,8 +89,16 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder> {
                 holder.taskname!!.setTextColor(Color.parseColor("#0F9D58"))
 
                 //to make animation between image view disappear and text view appear
-                holder.task_isdone!!.alpha = 1.0f
-                holder.done!!.alpha = 0.0f
+                //In two ways
+
+
+                //holder.task_isdone!!.alpha = 1.0f
+                // holder.done!!.alpha = 0.0f
+
+                //OR
+
+                holder.task_isdone!!.isVisible = true
+                holder.done!!.isVisible = false
             }
 
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.android.todo_app.MyDatabase
@@ -144,8 +145,15 @@ class ListFragment : Fragment() {
                     taskname.setTextColor(Color.parseColor("#0F9D58"))
 
                     //to make animation between image view disappear and text view appear
-                    task_isdone.alpha = 1.0f
-                    done.alpha = 0.0f
+                    //In two ways
+
+                    //task_isdone.alpha = 1.0f
+                    //done.alpha = 0.0f
+
+                    //OR
+
+                    task_isdone.isVisible = true
+                    done.isVisible = false
                 }
 
 

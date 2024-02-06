@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
             val addtodobuttonsheet = AddFragment()
             addtodobuttonsheet.show(supportFragmentManager," ")  //show button sheet
 
-            //call back
-            addtodobuttonsheet.OnTodoAddlisten=object :AddFragment.OnTodoAddlistener{
+            //add call back
+            addtodobuttonsheet.OnTodoAddlisten = object : AddFragment.OnTodoAddlistener {
                 override fun OnTodoAdd() {
                     //refresh database in list fragment
 
@@ -42,8 +42,11 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        //update call back
+
+
         bottomnavigation.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener {
-            if(it.itemId == R.id.list) {
+            if (it.itemId == R.id.list) {
                 supportfragment(listFragment)     //save object
 
             } else if (it.itemId == R.id.settings) {
