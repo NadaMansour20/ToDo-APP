@@ -1,4 +1,4 @@
-![WhatsApp Image 2024-02-14(1)](https://github.com/NadaMansour20/ToDo-APP/assets/125664031/28716f36-545b-4558-97c8-cb3cd2897722)<h1> ToDo App </h1>
+<h1> ToDo App </h1>
 An application in which I can save tasks that I want to complete at a specific time, I will add them, and I can also update and delete them, and it has the advantage of being able to change the language and mode of the application.
 I used Room database
 
