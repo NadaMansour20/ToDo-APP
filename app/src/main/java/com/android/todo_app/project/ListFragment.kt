@@ -3,6 +3,7 @@ package com.android.todo_app.project
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +15,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.android.todo_app.MyDatabase
 import com.android.todo_app.R
-import com.android.todo_app.clearTime
 import com.android.todo_app.database.Todo
 import com.daimajia.swipe.SwipeLayout
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 
 class ListFragment : Fragment() {
 
@@ -73,10 +76,18 @@ class ListFragment : Fragment() {
 
     fun getTodoListFromDB() {
 
+        // store date without minutes ar seconds or hours because if i don't it ,task is stored by hours not day
+
+        val dateformat: DateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val Dateafterformat: Date = dateformat.parse(dateformat.format(calender.time))
+
+
         //if list fragment is not visible return
         if (context == null) return
         todolistdata = MyDatabase.getInstance(requireContext()).todoDao()
-            .getTodoByDate(calender.clearTime().time) //calender.time return time in millisecond and clearTime() used to delete millisecond
+            .getTodoByDate(Dateafterformat)
+
+        Log.d("date is ", Dateafterformat.toString())
         listadapter.changeData(todolistdata)
     }
 

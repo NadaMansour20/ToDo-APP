@@ -10,11 +10,13 @@ import android.widget.DatePicker
 import android.widget.TextView
 import com.android.todo_app.MyDatabase
 import com.android.todo_app.R
-import com.android.todo_app.clearTime
 import com.android.todo_app.database.Todo
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputLayout
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 
 class AddFragment:BottomSheetDialogFragment() {
 
@@ -88,9 +90,12 @@ class AddFragment:BottomSheetDialogFragment() {
 
     // insert data into database
     fun insertdata(task: String, details: String) {
+        // store date without minutes ar seconds or hours because if i don't it ,task is stored by hours not day
+        val dateformat: DateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val Dateafterformat: Date = dateformat.parse(dateformat.format(calender.time))
 
         val todo = Todo(
-            id, name = task, detailes = details, date = calender.clearTime().time, is_done = false
+            id, name = task, detailes = details, date = Dateafterformat, is_done = false
         )
         MyDatabase.getInstance(requireContext().applicationContext).todoDao().add_todo(todo)
 

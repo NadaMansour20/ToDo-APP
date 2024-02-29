@@ -9,12 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.todo_app.MyDatabase
 import com.android.todo_app.R
-import com.android.todo_app.clearTime
 import com.android.todo_app.database.Todo
 import com.google.android.material.textfield.TextInputLayout
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 
 
 class UpdateActivity : AppCompatActivity() {
@@ -84,9 +84,13 @@ class UpdateActivity : AppCompatActivity() {
                 val task = updatetask?.editText?.text.toString()
                 val details = updatedetails?.editText?.text.toString()
 
+                // store date without minutes ar seconds or hours because if i don't it ,task is stored by hours not day
+
+                val dateformat: DateFormat = SimpleDateFormat("dd/MM/yyyy")
+                val Dateafterformat: Date = dateformat.parse(dateformat.format(calender.time))
 
                 val recievetodo =
-                    Todo(datafromintent.id, task, details, calender.clearTime().time, false)
+                    Todo(datafromintent.id, task, details, Dateafterformat, false)
 
                 updatedata(recievetodo)
             }
