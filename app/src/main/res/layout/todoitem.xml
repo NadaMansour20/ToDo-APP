@@ -19,7 +19,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:src="@drawable/baseline_delete_24"/>
+        android:src="@drawable/baseline_delete_24" />
 
 
 
@@ -28,11 +28,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="@drawable/card"
-    android:elevation="10dp"
-    app:cardCornerRadius="10dp"
-    app:contentPadding="7dp"
-    style="@style/MAIN_SCREEN"
+        style="@style/MAIN_SCREEN"
+        android:elevation="10dp"
+        app:cardCornerRadius="15dp"
      >
 
 
