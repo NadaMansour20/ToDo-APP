@@ -1,12 +1,17 @@
 package com.android.todo_app.project
 
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.android.todo_app.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarView
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,15 +26,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        //to reset language AND mode after app closed
+        val languageeeeeeeeee = LanguagePreferenceHelper.getLanguage(applicationContext)
+        language(languageeeeeeeeee)
+        //Log.e("languageeeeeeeeee", languageeeeeeeeee)
 
-        bottomnavigation=findViewById(R.id.bottomnavigation)
-        addbutton=findViewById(R.id.floatingbutton)
+        val modeeeee = LanguagePreferenceHelper.getMode(applicationContext)
+        if (modeeeee == 0)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+
+
+        bottomnavigation = findViewById(R.id.bottomnavigation)
+        addbutton = findViewById(R.id.floatingbutton)
 
 
 
         addbutton.setOnClickListener {
             val addtodobuttonsheet = AddFragment()
-            addtodobuttonsheet.show(supportFragmentManager," ")  //show button sheet
+            addtodobuttonsheet.show(supportFragmentManager, " ")  //show button sheet
 
             //add call back
             addtodobuttonsheet.OnTodoAddlisten = object : AddFragment.OnTodoAddlistener {
@@ -67,6 +84,19 @@ class MainActivity : AppCompatActivity() {
         val intent = intent
         finish()
         startActivity(intent)
+
+    }
+
+    // to change language of application
+    fun language(lang: String) {
+        val res: Resources = resources
+        val config: Configuration = res.configuration
+        val dis: DisplayMetrics = res.displayMetrics
+        val locale: Locale = Locale(lang)
+        Locale.setDefault(locale)
+        config.setLocale(locale)
+        res.updateConfiguration(config, dis)
+
     }
 }
 

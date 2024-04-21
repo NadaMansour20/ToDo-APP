@@ -24,6 +24,7 @@ class SettingsFragment : Fragment() {
     lateinit var spinnermode: Spinner
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,36 +64,42 @@ class SettingsFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-
+                var selectedLanguage = ""
                 if (position == 1) {
                     language("ar")
+                    selectedLanguage = "ar"
 
                 }
                 if (position == 2) {
                     language("en")
-
-
+                    selectedLanguage = "en"
                 }
+
+                LanguagePreferenceHelper.saveLanguage(requireContext(), selectedLanguage)
 
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
+
+
         // change mode
         spinnermode.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if(position==1){
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    LanguagePreferenceHelper.saveMode(requireContext(), 1)
                 }
                 if(position==2){
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
+                    LanguagePreferenceHelper.saveMode(requireContext(), 0)
                 }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
+
 
     }
 
@@ -120,9 +127,13 @@ class SettingsFragment : Fragment() {
 
         // casting requireActivity of fragment as activity and restart it
         (requireActivity() as MainActivity).restartFragment()
-
-
     }
+
+
+
+
+
+
 
 
 }

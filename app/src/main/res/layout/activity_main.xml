@@ -16,7 +16,7 @@
         android:theme="@style/headname"
         style="@style/TEXTVIEW_BACKGROUND"
         android:padding="70dp"
-        android:text="To Do List"
+        android:text="@string/to_do_list"
         />
 
     <FrameLayout
